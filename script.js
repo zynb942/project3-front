@@ -92,7 +92,7 @@ showInfoBtn.forEach(function (btn, i) {
 
 
         `);
-        btn.style.display = "none";
+        // btn.style.display = "none";
     })
 
 }
