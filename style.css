@@ -243,9 +243,18 @@ header a:last-child {
     height: 250px;
 }
 
-.products-section .products .product .prod2Img{
-   width: 170px; 
+.products-section .products .product .prod2Img {
+    width: 170px;
 }
+
+.products-section .products .product:first-child .prod2Img {
+    width: 250px;
+}
+
+.products-section .products .product:last-child .prod2Img {
+    width: 250px;
+}
+
 
 .products-section .products .product {
     position: relative;
@@ -258,33 +267,37 @@ header a:last-child {
 
 .products-section .products .product div {
     color: #000;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 .products-section .products .product2 div {
     color: #ffffff;
 }
 
-.products-section .products .product div p{
-    margin-bottom: 25px;
+.products-section .products .product div p {
+    margin-bottom: 10px;
 }
 
-.products-section .products .product div button{
+.products-section .products .product div button {
     padding: 12px 25px;
     background-color: rgb(169, 105, 53);
     color: white;
     border-radius: 25px;
     border: 1px solid white;
     font-size: 19px;
-    margin-left: 15px;
+    margin-bottom: 15px;
     cursor: pointer;
 }
 
-.products-section .products .product2 div button{
+.products-section .products .product2 div button {
     background-color: #5C1D5B;
 }
 
-.products-section .products .product2 div .prod3btn{
+.products-section .products .product2:first-child div .showInfoBtn {
+    background-color: #2f1e1b;
+}
+
+.products-section .products .product2:last-child div .showInfoBtn {
     background-color: #2f1e1b;
 }
 
@@ -300,9 +313,31 @@ header a:last-child {
 
 }
 
+.products-section .products .product:first-child .pro-info {
+    color: #000;
+}
+
+.products-section .products .product:first-child .pro-info .sizes {
+    color: #000;
+}
+
+.products-section .products .product div .addcart {
+    padding: 10px 15px;
+    color: #ffffff;
+    background-color: rgb(250, 140, 23);
+    margin-top: 8px;
+
+}
+
+.products-section .products .product div .sizes .cupsAmount{
+    border-radius: 20%;
+    border: 1px solid black;
+}
+
+
 /* Footer style */
 
-footer{
+footer {
     width: 100%;
     height: 20vh;
     background-color: rgb(212, 111, 3);
