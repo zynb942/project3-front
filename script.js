@@ -60,25 +60,26 @@ for (let i = 0; i < products.length; i++) {
 
 
 const showInfoBtn = document.querySelectorAll(".products .product .pro-info .showInfoBtn")
-
+const orders = document.querySelector(".orders-section .orders")
+let currentUser = null;
 
 
 showInfoBtn.forEach(function (btn, i) {
     btn.addEventListener("click", () => {
         const btnparent = btn.parentElement;
-       btnparent.insertAdjacentHTML("beforeend", `
+        btnparent.insertAdjacentHTML("beforeend", `
         <p>${products[i].name}</p>
         <span>${products[i].ctegory}</span>
         <div class="sizes">
                 <label>
                 choose size: 
-                    <input type="radio" name="coffe-size" value="L"> L
+                    <input type="radio" name="coffe-size-${i}" value="L"> L
                 </label>
                 <label>
-                    <input type="radio" name="coffe-size" value="M"> M
+                    <input type="radio" name="coffe-size-${i}" value="M"> M
                 </label>
                 <label>
-                    <input type="radio" name="coffe-size" value="S"> S
+                    <input type="radio" name="coffe-size-${i}" value="S"> S
                 </label>
             </div>
 
@@ -92,9 +93,78 @@ showInfoBtn.forEach(function (btn, i) {
 
 
         `);
-        // btn.style.display = "none";
-    })
+        btn.style.display = "none";
 
+        const addcartBtns = document.querySelectorAll(".products-section .products .product .pro-info .addcart")
+
+
+        addcartBtns.forEach(function (btn, i) {
+            btn.addEventListener("click", () => {
+                if (!currentUser) {
+                    let name = prompt("enter your userName: ")
+                    let age = prompt("enter your age: ")
+                    currentUser = { name, age, order: [] }
+                }
+
+                const proSize = btnparent.querySelector(`input[name="coffe-size-${i}"]:checked`)
+                let size = proSize ? proSize.value : "M"
+
+                const proAmount = btnparent.querySelector(".cupsAmount")
+                let amount = proAmount ? Number(proAmount.value) : 1;
+
+                let product = products[i].name;
+
+                let price;
+
+                switch (size) {
+                    case "L":
+                        price = products[i].price + 10;
+                        break;
+                    case "M":
+                        price = products[i].price + 5;
+                        break;
+                    case "S":
+                        price = products[i].price;
+                        break;
+                    default:
+                        price = products[i].price;
+
+                }
+
+                currentUser.order.push({ product, size, amount, price })
+
+                let total = currentUser.order.reduce((accum, count) => {
+                    return accum + (count.amount * count.price)
+                }, 0)
+
+                orders.insertAdjacentHTML('beforebegin', `
+                    <h3>customer name: ${currentUser.name}</h3>
+                     <p>order: </p>
+                `);
+
+                currentUser.order.forEach(function (ord, i) {
+                    let subtotal = ord.amount * ord.price
+                    orders.innerHTML = `
+                     <div class="order">
+                        <p class="name">${ord.product}</p>
+                        <p class="amount">Amount: ${ord.amount}</p>
+                        <p class="price">price: ${subtotal}EGP</p>
+                        <button class="delete">remove</button>
+            </div>
+                    
+                    `
+
+                })
+                orders.insertAdjacentHTML('afterend', `
+                   <p class="total">Total: ${total}EGP</p>
+                `);
+
+            })
+
+        })
+
+
+    })
 }
 )
 

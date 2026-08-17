@@ -334,6 +334,52 @@ header a:last-child {
     border: 1px solid black;
 }
 
+.orders-section{
+ margin-top: 80px;
+    padding: 50px;
+    border-top:1px solid #f8cc65;
+}
+
+.orders{
+   
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.orders-section h3{
+    font-size: 25px;
+}
+
+.orders-section p{
+    font-size: 20px;
+}
+
+.order{
+    margin-top:15px ;
+    padding: 15px;
+   min-width: 200px;
+    min-height: 200px;
+    border-radius: 20px;
+    border: 1px solid rgb(110, 108, 108);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete{
+    padding: 10px 12px;
+    border-radius: 15px;
+    background-color: #b90303;
+    color: white;
+    cursor: pointer;
+}
+
+.total{
+    margin-top: 25px;
+    font-size: 25px;
+    font-weight: bold;
+}
 
 /* Footer style */
 
